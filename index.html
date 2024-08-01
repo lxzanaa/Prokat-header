@@ -67,14 +67,20 @@
     }
 
     .header-responsive-menu {
+        display: none;
         top: -100%;
         left: 0;
         right: 0;
         transition: top 0.3s ease-in-out;
+        max-height: 100vh;
+        height: 100%;
     }
 
     .header-responsive-menu.show {
         top: 0;
+        display: block;
+        overflow-y: scroll;
+        max-height: 100vh;
     }
 </style>
 
@@ -209,7 +215,7 @@
             </div>
         </div>
 
-        <div class="header-responsive-menu h-100 d-md-none px-4 position-fixed left-0 py-3 bg-white z-3">
+        <div class="header-responsive-menu d-md-none px-4 position-fixed left-0 py-3 bg-white z-3">
             <div class="mb-5">
                 <div class="d-flex justify-content-between">
                     <a class="header_logo d-flex" href="#">
