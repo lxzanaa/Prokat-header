@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <style>
@@ -19,6 +19,21 @@
         font-size: 14px;
     }
 
+    @media (max-width: 1285px) {
+        .nav-link {
+            font-size: 13px;
+        }
+    }
+    @media (max-width: 1268px) {
+        .nav-link {
+            font-size: 11px;
+        }
+    }
+    @media (max-width: 1000px) {
+        .nav-link {
+            font-size: 14px;
+        }
+    }
     .dropdown-toggle::after {
         display: none;
     }
@@ -33,24 +48,47 @@
         padding-top: 12px;
         padding-bottom: 12px;
     }
-    .mobile-button{
+
+    .mobile-hide-button,
+    .mobile-button {
         background: linear-gradient(135deg, #00FFAA 0%, #00BBFF 53.09%, #4579F5 100%);
+    }
+
+    .collapse.show {
+        transition: opacity 0.5s ease;
+    }
+
+    .collapse {
+        transition: height 0.5s ease;
+    }
+
+    .collapse.show {
+        opacity: 1;
+    }
+
+    .header-responsive-menu {
+        top: -100%;
+        left: 0;
+        right: 0;
+        transition: top 0.3s ease-in-out;
+    }
+
+    .header-responsive-menu.show {
+        top: 0;
     }
 </style>
 
 <body>
-
-
-    <header class="header py-2">
+    <header class="header py-md-2 py-3">
         <div class="container d-flex mx-auto justify-content-between">
             <div class="d-flex align-items-center gap-5">
                 <a class="d-flex" href="#">
                     <img class="header_logo w-100" src="./header_logo.svg" alt="Logo">
                 </a>
-                <ul class="list-unstyled d-none d-md-flex align-items-center gap-4 mb-0">
+                <ul class="list-unstyled d-none d-md-flex align-items-center gap-md-1 gap-xl-4 mb-0">
                     <li class="nav-item dropdown">
                         <button
-                            class="nav-link btn text-decoration-none d-flex align-items-center gap-2 dropdown-toggle"
+                            class="nav-link bg-none border-0 bg-transparent text-decoration-none d-flex align-items-center gap-2 dropdown-toggle"
                             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Каталог
                             <span>
@@ -76,8 +114,8 @@
                     <li class="nav-item"><a href="#" class="nav-link text-decoration-none">Контакты</a></li>
                 </ul>
             </div>
-            <div class="d-none d-lg-flex align-items-center gap-5">
-                <ul class="list-unstyled  d-flex align-items-center mb-0 gap-3">
+            <div class="d-none d-lg-flex align-items-center gap-md-0 gap-xl-4">
+                <ul class="list-unstyled  d-flex align-items-center mb-0 gap-xl-3 gap-md-1">
                     <li class="">
                         <a href="#" target="_blank">
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
@@ -108,7 +146,9 @@
                         звонок</button>
                 </div>
             </div>
-            <button class="mobile-button  btn border-0 rounded-circle p-0 d-flex d-md-none align-items-center justify-content-center" style="width: 44px; height: 44px;">
+            <button
+                class="mobile-button  btn border-0 rounded-circle p-0 d-flex d-md-none align-items-center justify-content-center"
+                style="width: 44px; height: 44px;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z" stroke="white"
                         stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
@@ -126,14 +166,96 @@
             </button>
         </div>
 
-        <div class="container">
+        <div class="header-responsive-menu container position-fixed left-0 py-3 bg-white z-3">
+            <div class="mb-5">
+                <div class="d-flex justify-content-between">
+                    <a class="d-flex" href="#">
+                        <img class="header_logo w-100" src="./header_logo.svg" alt="Logo">
+                    </a>
+                    <button
+                        class="mobile-hide-button  btn border-0 rounded-circle p-0 d-flex align-items-center justify-content-center"
+                        style="width: 44px; height: 44px;">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.9999 16.9999L9 9M9 9L1 1M9 9L17 1M9 9L1 17" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="mb-5">
+                <ul class="list-unstyled d-flex flex-column text-center gap-1">
+                    <li class="nav-item py-1 d-flex justify-content-center flex-column gap-2">
+                        <button class="nav-link btn d-flex justify-content-center align-items-center gap-2"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            <span>Каталог</span>
+                            <svg width="14" height="7" viewBox="0 0 14 7" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.28 0.966675L7.9333 5.31334C7.41997 5.82668 6.57997 5.82668 6.06664 5.31334L1.71997 0.966675"
+                                    stroke="currentColor" stroke-opacity="0.6" stroke-width="1.5" stroke-miterlimit="10"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <div id="faq1" class="collapse">
+                            <ul class="list-unstyled d-flex flex-column text-center bg-secondary bg-opacity-10">
+                                <li class="nav-item py-2"><a class="nav-link" href="#">item</a></li>
+                                <li class="nav-item py-2"><a class="nav-link" href="#">item</a></li>
+                                <li class="nav-item py-2"><a class="nav-link" href="#">item</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item py-1"><a class="nav-link" href="#">Условия проката</a></li>
+                    <li class="nav-item py-1"><a class="nav-link" href="#">Нет нужного товара?</a></li>
+                    <li class="nav-item py-1"><a class="nav-link" href="#">Контакты</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul class="list-unstyled d-flex align-items-center justify-content-center mb-0 gap-3 mb-5">
+                    <li class="">
+                        <a href="#" target="_blank">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32ZM16.6919 12.0074C15.2589 12.6034 12.3949 13.8371 8.09992 15.7083C7.40248 15.9856 7.03714 16.257 7.00388 16.5223C6.94767 16.9706 7.50915 17.1472 8.27374 17.3876C8.37774 17.4203 8.4855 17.4542 8.59598 17.4901C9.34822 17.7346 10.3601 18.0207 10.8862 18.0321C11.3633 18.0424 11.8959 17.8457 12.4839 17.4419C16.4968 14.7331 18.5683 13.3639 18.6983 13.3344C18.7901 13.3136 18.9172 13.2874 19.0034 13.3639C19.0895 13.4405 19.0811 13.5855 19.0719 13.6244C19.0163 13.8615 16.8123 15.9106 15.6717 16.971C15.3161 17.3015 15.0639 17.536 15.0124 17.5896C14.8969 17.7096 14.7791 17.823 14.666 17.9321C13.9672 18.6058 13.4431 19.111 14.695 19.936C15.2967 20.3325 15.7781 20.6603 16.2584 20.9874C16.7829 21.3446 17.306 21.7009 17.9829 22.1446C18.1554 22.2576 18.3201 22.375 18.4805 22.4894C19.0909 22.9246 19.6393 23.3155 20.3168 23.2532C20.7105 23.217 21.1172 22.8468 21.3237 21.7427C21.8118 19.1335 22.7712 13.4801 22.9929 11.1505C23.0123 10.9464 22.9879 10.6851 22.9683 10.5705C22.9486 10.4558 22.9076 10.2924 22.7586 10.1715C22.582 10.0283 22.3095 9.99805 22.1877 10.0001C21.6335 10.01 20.7834 10.3056 16.6919 12.0074Z"
+                                    fill="#212429" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" target="_blank">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="32" height="32" rx="16" fill="#212429" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8.41213 9.78253L13.6963 15.069C14.8488 16.2193 16.7328 16.2203 17.8862 15.069L23.1704 9.78253C23.1829 9.77011 23.1925 9.75509 23.1985 9.73854C23.2046 9.72199 23.2069 9.70431 23.2054 9.68676C23.2038 9.66921 23.1984 9.65222 23.1896 9.63699C23.1807 9.62175 23.1686 9.60866 23.1541 9.59862C22.6152 9.22275 21.9594 8.99991 21.253 8.99991H10.3295C9.62311 8.99991 8.96736 9.22278 8.4284 9.59862C8.41392 9.60866 8.40182 9.62175 8.39297 9.63699C8.38411 9.65222 8.37872 9.66921 8.37716 9.68676C8.37561 9.70431 8.37794 9.72199 8.38398 9.73854C8.39002 9.75509 8.39963 9.77011 8.41213 9.78253ZM7 12.3294C6.99957 11.7922 7.13011 11.2631 7.38031 10.7878C7.38904 10.771 7.40161 10.7566 7.41698 10.7456C7.43236 10.7346 7.45011 10.7274 7.46879 10.7246C7.48747 10.7217 7.50656 10.7233 7.5245 10.7293C7.54244 10.7352 7.55873 10.7453 7.57205 10.7587L12.7894 15.976C14.4415 17.6306 17.1401 17.6315 18.7932 15.976L24.0105 10.7587C24.0238 10.7453 24.0401 10.7352 24.0581 10.7293C24.076 10.7233 24.0951 10.7217 24.1138 10.7246C24.1325 10.7274 24.1502 10.7346 24.1656 10.7456C24.181 10.7566 24.1935 10.771 24.2023 10.7878C24.4524 11.2631 24.583 11.7923 24.5826 12.3294V19.2799C24.5826 21.1172 23.088 22.6094 21.253 22.6094H10.3295C8.49457 22.6094 7 21.1172 7 19.2799V12.3294Z"
+                                    fill="white" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+                <a class="nav-link text-center mb-5" href="tel: +7 900 000 00 00">+7 900 000 00 00</a>
+                <button class="button-gradient border-0 rounded-pill w-100 text-white py-3">Заказать звонок</button>
+            </div>
 
         </div>
     </header>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script>
+        const mobileButton = document.querySelector('.mobile-button');
+        const mobileHideButton = document.querySelector('.mobile-hide-button');
+        const headerMenu = document.querySelector('.header-responsive-menu');
+
+        mobileButton.addEventListener('click', function () {
+            headerMenu.classList.add('show');
+        });
+
+        mobileHideButton.addEventListener('click', function () {
+            headerMenu.classList.remove('show');
+        });
+    </script>
 </body>
 
 </html>
